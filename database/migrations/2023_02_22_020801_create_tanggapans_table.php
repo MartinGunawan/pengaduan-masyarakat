@@ -16,7 +16,7 @@ class CreateTanggapansTable extends Migration
         Schema::create('tanggapans', function (Blueprint $table) {
             $table->Integer('id_tanggapan' ,'11');
             // $table->integer('id_pengaduan', '11');
-             $table->date('tgl_pengaduan');
+             $table->date('tgl_tanggapan');
              $table->text('tanggapan');
              $table->char('nik', '17');
             $table->timestamps();

@@ -44,7 +44,7 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="/pengaduan" class="nav-link active">
+                <a href="/pengaduan" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Pengaduan</p>
                 </a>

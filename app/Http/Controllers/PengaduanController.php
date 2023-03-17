@@ -42,16 +42,19 @@ class PengaduanController extends Controller
             'foto' => 'required',
             'status' => 'required'
         ]);
+
+        $imgName = $request->foto->getClientOriginalName(). '-' . time(). '-' . $request->foto->extension();
+        $request->foto->move(public_path('image'), $imgName); 
  
         Pengaduan::create([
             'tgl_pengaduan' => $request->tgl_pengaduan,
             'nik' => $request->nik,
             'isi_laporan' => $request->isi_laporan,
-            'foto' => $request->foto,
+            'foto' => $imgName,
             'status' => $request->status
         ]);
 
-        return redirect('/pengaduan');
+        return redirect('/pengaduan')->with('success', 'Data Berhasil Disimpan');
     }
 
     /**
@@ -62,7 +65,8 @@ class PengaduanController extends Controller
      */
     public function show($id)
     {
-        
+        $pengaduan = Pengaduan::find($id);
+        return view('pengaduan.show')->with('pengaduan', $pengaduan);
     }
 
     /**
@@ -113,6 +117,6 @@ class PengaduanController extends Controller
     public function destroy($id)
     {
         pengaduan::where('id_pengaduan',$id)->delete();
-        return redirect('/pengaduan');
+        return redirect('/pengaduan')->with('info', 'Data Berhasil Dihapus');
     }
 }

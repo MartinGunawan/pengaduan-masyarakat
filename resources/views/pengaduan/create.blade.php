@@ -13,7 +13,7 @@
                 </div>
                 <div class="card-body">
 
-                    <form method="post" action="/pengaduan/store">
+                    <form method="post" action="/pengaduan/store" enctype="multipart/form-data">
 
                         {{ csrf_field() }}
 
@@ -26,6 +26,7 @@
                                     {{ $errors->first('tgl_pengaduan')}}
                             </div>
                         @endif
+                        
 
                     </div>
 
@@ -40,20 +41,20 @@
                         @endif
                     </div>
 
-                    <div class="form-group">
-                        <label>isi_laporan</label>
-                        <input type="text" name="isi_laporan" class="form-control" placeholder="isi laporan .."></textarea>
-
-                        @if($errors->has('isi_laporan'))
-                            <div class="text-danger">
-                                {{ $errors->first('isi_laporan')}}
-                            </form>
+                   <div class="form-group">
+                                            <label for="val-username">Keluhan Anda</label>
+                                            <div class="col-lg-6">
+                                                <textarea name="isi_laporan" class="form-control" id="" cols="30" rows="10"></textarea>
+                                                @if($errors->has('isi_laporan'))
+                                            <div class="text-danger">
+                                                {{ $errors->first('isi_laporan')}}
+                                            </div>
                         @endif
                     </div>
 
                     <div class="form-group">
                         <label>Foto</label>
-                        <input type="foto" name="foto" class="form-control" placeholder="foto pengaduan .."></textarea>
+                        <input type="file" name="foto" class="form-control" placeholder="foto pengaduan .."></textarea>
 
                         @if($errors->has('foto'))
                             <div class="text-danger">
@@ -63,9 +64,9 @@
                     </div>
 
                     <div class="form-group">
-                    <label>status</label>
-                    <input type="text" name="status" class="form-control" placeholder="status pengaduan .."></textarea>
-
+                   <p>status</p>
+                        <input type="radio" name="status" value="proses"/> Proses</p>
+                        <input type="radio" name="status" value="selesai"/> Selesai</p>
 
                 @if($errors->has('status'))
                     <div class="text-danger">
@@ -77,7 +78,7 @@
             
              <div class="form-group">
                     <input type="submit" class="btn btn-success" value="Simpan">
-                    <a href="/pengaduan" class="btn btn-sm btn-primary">Kembali</a> 
+                    <a href="/pengaduan" class="btn btn-primary">Kembali</a> 
                 </div>
 
                 </form>

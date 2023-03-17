@@ -83,7 +83,6 @@
                         </div>
 
                         <div class="form-group">
-                            <input type="submit" class="btn btn-sm btn-primary" value="Edit">
                             <input type="submit" class="btn btn-sm btn-danger" value="Simpan">
                             <a href="/pengaduan" class="btn btn-sm btn-primary">Kembali</a>
                         </div>

@@ -1,77 +1,118 @@
 <html lang="en">
 <head>
- @include('Template.head')
+  @include('template.head')
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
 
   <!-- Navbar -->
- @include('Template.navbar')
+  @include('template.navbar')
   <!-- /.navbar -->
 
   <!-- Main Sidebar Container -->
-  @include('Template.sidebar')
+  @include('template.sidebar')
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <div class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-3">
-          <div class="col-sm-12">
-
-            <h1 class="m-0">Pengaduan</h1>
-
 <!doctype html>
 <html>
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet">
-        <title>Pengaduan</title>
-</head>
-<body>
-    <div class="container">
-        <div class="card mt-5">
-            <div class="card-header text-center">
-            </div>
-            <div class="card-body">
-                <a href="/pengaduan/create" class="btn btn-primary">Tambah Data</a>
-                <br/>
-                <br/>
-                <table class="table table-bordered table-hover table-striped">
-                    <thead>
-                        <tr>
+        <title>Pengaduan Terbaru</title>
+    </head>
+    <body>
+        <div class="container">
+            <div class="card mt-5">
+                <div class="card-header text-center">
+                     Pengaduan Masyarakat</a>
+                </div>
+                <div class="card-body">
+                    <a href="/pengaduan/create" class="btn btn-primary">Input Data Pengaduan</a>
+                    <br/>
+                    <br/>
+                    <table class="table table-bordered table-hover table-striped">
+                        <thead>
+                            <tr>
+                                <th>ID</th>   
+                                <th>NIK</th>
+                                <th>Tanggal Pengaduan</th>
+                                <th>Isi Pengaduan</th>
+                                <th>Foto</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach($pengaduan as $p)
+                            <tr>
+                                <td>{{ $p->id_pengaduan }}</td>
+                                <td>{{ $p->nik }}</td>
+                                <td>{{ $p->tgl_pengaduan }}</td>
+                                <td>{{ $p->isi_laporan }}</td>
+                                <td><img src="{{ asset('image/'. $p->foto)}}" height="20%" width="30%" alt="pengaduan"/></td>
+                                <td>
+                                    <a href="/pengaduan/edit/{{ $p->id_pengaduan }}" class="btn btn-warning">Edit</a>
+                                <a href="/pengaduan/destroy/{{ $p->id_pengaduan }}" class="btn btn-danger">Hapus</a>
+                                <a href="/pengaduan/show/{{ $p->id_pengaduan }}" class="btn btn-dark">detail</a>
 
-                            <th>Id</th>
-                            <th>Tanggal_Pengaduan</th>
-                            <th>Nik</th>
-                            <th>Isi Laporan</th>
-                            <th>Foto</th>
-                            <th>Status</th>
-                            <th>OPSI</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach($pengaduan as $p)
-                        <tr>
-                            <td>{{ $p->id }}</td>
-                            <td>{{ $p->tgl_pengaduan}}</td>
-                            <td>{{ $p->nik }}</td>
-                            <td>{{ $p->isi_laporan }}</td>
-                            <td>{{ $p->foto }}</td>
-                            <td>{{ $p->status }}</td>
-                            <td> 
-                                <a href="/pengaduan/edit/{{ $p->id_pengaduan }}" class="btn btn-sm btn-warning">Edit</a>
-                                <a href="/pengaduan/hapus/{{ $p->id_pengaduan }}" class="btn btn-sm btn-primary">Detail</a>
-                                <a href="/pengaduan/destroy/{{ $p->id_pengaduan }}" class="btn btn-sm btn-danger">Hapus</a> 
-                            </td>
-                        </tr>
-                        @endforeach
-                    </tbody>
-                </table>
+                                </td>
+                                
+                            </tr>
+                            @endforeach
+                        </tbody>
+                </div>
             </div>
+          
         </div>
-    </div>
-</body>
+    </body>
 </html>
+    {{-- <!-- Content Header (Page header) -->
+    <div class="content-header">
+        <div class="container-fluid">
+          <div class="row mb-2">
+            <div class="col-sm-6">
+              <h1 class="m-0">Starter Page</h1>
+            </div><!-- /.col -->
+            <div class="col-sm-6">
+              <ol class="breadcrumb float-sm-right">
+                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                <li class="breadcrumb-item active">Data Pengaduan</li>
+              </ol>
+            </div><!-- /.col -->
+          </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+      </div>
+      <!--/.content-header -->
+      <!-- Main content -->
+      <div class="content">
+          <div class="container-fluid">
+              <div class="row">
+                  <h1>ini halaman pengaduan</h1>
+              </div>
+          </div>
+      </div> --}}
+      <!-- /.content-wrapper -->
+  
+     <!-- Main Footer -->
+      @include('template.footer')
+     </footer>
+    </div>
+            
+  
+    <!-- Control Sidebar -->
+    <aside class="control-sidebar control-sidebar-dark">
+      <!-- Control sidebar content goes here -->
+      <div class="p-3">
+        <h5>Title</h5>
+        <p>Sidebar content</p>
+      </div>
+    </aside>
+    <!-- /.control-sidebar -->
+  
+  
+  <!-- REQUIRED SCRIPTS -->
+  
+    @include('template.script')
+    @include('sweetalert::alert')
+  </body>
+  </html>
